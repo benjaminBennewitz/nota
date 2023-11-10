@@ -1,0 +1,81 @@
+/*###############################
+###
+###     STYLESHEET NOTA APP
+###     version 1.0.0
+###     author: Benjamin Benenwitz
+###
+###
+***       ██████╗  ▀█
+***       ██╔══██╗ █▄
+***       ██████╦╝
+***       ██╔══██╗
+***       ██████╦╝
+***       ╚═════╝
+###
+#################################*/
+
+@media screen and (max-width: 1023px) {
+    .searchbar{
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+ 
+}
+
+@media screen and (max-width: 650px) {
+    .hide-input{
+        display: block;
+        position: absolute;
+        top:72px;
+        opacity: 1;
+        border-radius: 0;
+    }
+    .searchbar{
+        width: 100vw;
+    }
+    .search-icon-pos{
+        display: none;
+    }
+    .visible-input{
+        display: none;
+        opacity: 0;
+    }
+    .note-outer{
+        height: 64px;
+        width: 482px;
+    }
+    .search-icon-pos-mobile{
+        display: block;
+    }
+}
+@media screen and (max-width: 500px) {
+    nav{
+        justify-content: space-around;
+    }
+    .note-outer{
+        width: 280px;
+    }
+    .note-outer-inputs{
+        margin:16px;
+        width: 280px;
+    }
+    .options-container-left{
+        gap:16px;
+    }
+    .options-icons-left{
+        margin-left: 8px;
+    }
+    .nav-container-right{
+        gap:12px;
+        margin-right:12px;
+    }
+    .nav-container-right img{
+        height:20px;
+        width: auto;
+    }
+    .nav-container-left{
+        gap:16px;
+    }
+}

@@ -1,0 +1,558 @@
+/*###############################
+###
+###     STYLESHEET NOTA APP
+###     version 1.0.0
+###     author: Benjamin Benenwitz
+###
+###
+***       ██████╗  ▀█
+***       ██╔══██╗ █▄
+***       ██████╦╝
+***       ██╔══██╗
+***       ██████╦╝
+***       ╚═════╝
+###
+#################################*/
+
+/*###############################
+###
+###     GENERAL STYLING
+###
+###     CLASSES
+###
+#################################*/
+
+
+/*#######################       GENERAL STYLING*/
+:root{
+    --seashell: seashell;
+    --blue: #070059;
+    --beige:#ddcaaa;
+    --black:black;
+    --white:white;
+}
+
+body{
+    margin:0;
+    color:var(--black);
+    background: var(--seashell);
+    font-family: Tahoma;
+
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+nav{
+    height: 56px;
+    width: 100vw;
+
+    padding:8px 0px;
+
+    position: absolute;
+    top:0;
+
+    background: var(--beige);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a{
+    cursor: pointer;
+}
+
+textarea{
+    all:unset;
+    cursor: text;
+    white-space-collapse: preserve;
+    text-wrap: wrap;
+    overflow-wrap: break-word;
+    
+    border: 0;
+    background: var(--white);
+    padding:16px;
+    font-family: tahoma;
+
+    color:var(--black);
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    all:unset;
+}
+
+p img{
+    margin-left:32px;
+    transition: all 250ms;
+}
+
+p img:hover{
+    transform: rotate(20deg);
+}
+/*#######################       GENERAL STYLING END*/
+
+
+/*#######################               CLASSES*/
+.body-dark{
+    filter: grayscale(60%);
+    background: #222224;
+}
+
+.main{
+    overflow: hidden;
+}
+
+.flex-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:32px;
+}
+
+.apps-icons img{
+    height: 32px;
+    width: auto;
+}
+
+.flex-snd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 280px;
+}
+
+.nav-container-left{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:32px;
+
+    margin-left:16px;
+}
+
+.left-icons{
+    height: 24px;
+    width: auto;
+}
+
+.nav-container-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:32px;
+
+    margin-right:32px;
+}
+
+.search-icon{
+    background: url('../assets/search.png') no-repeat center left;
+    background-size: contain;
+    background-origin: content-box;
+    background-color: var(--blue);
+}
+.search-icon-pos{
+    width: 16px;
+    height: 16px;
+    padding:8px;
+}
+
+.search-icon-pos-mobile{
+    width: 16px;
+    height: 16px;
+    padding:8px;
+
+    position: absolute;
+    top:72px;
+    right:16px;
+
+    display: none;
+}
+.flex-search-icon{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.searchbar{
+    border: none;
+    color:var(--white);
+    background-color: var(--blue);
+
+    height: 16px;
+    width: 350px;
+
+    padding:8px 0px;
+
+}.searchbar::placeholder{
+    font-style: italic;
+    color: var(--white);
+
+    padding-left: 16px;
+
+    }.searchbar:active {
+        background: var(--seashell); /* Hintergrundfarbe im Aktivzustand, wenn geklickt */
+        color:var(--black);
+
+        }.searchbar:focus {
+            background: var(--white); /* Hintergrundfarbe im Fokus-Zustand */
+            color:var(--black);
+           
+            }/* Verstecke das Icon im Fokus-Zustand */
+            .searchbar:focus + .search-icon {
+                display: none;
+            }
+
+.nav-hover:hover{
+    filter: invert();
+    transform: rotate(90deg);
+    transition: all 250ms;
+}
+
+.visible{
+    display: block;
+    opacity: 1;
+}
+
+.hide{
+    display: none;
+    opacity: 0;
+}
+
+.visible-input{
+    display: block;
+    opacity: 1;
+}
+
+.hide-input{
+    display: none;
+    opacity: 0;
+}
+
+.burger-menu{
+    line-height: 50px;
+
+    background: var(--blue);
+    color: var(--white);
+
+    width: 288px;
+    height: 100vh;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding-left:32px;
+
+    z-index: 999;
+}.burger-rows{
+    cursor: pointer;
+
+    }.burger-rows:hover{
+        background:var(--seashell);
+        border-radius: 20px 0 0 20px;
+        padding:8px;
+        color:var(--blue);
+        }.burger-rows:hover img {
+            filter: invert(100%);
+            margin-left: 16px;
+            }
+
+.fix-hover{
+    cursor:pointer;
+    transition: all 250ms;
+}
+.fix-hover:hover{
+   transform: rotate(20deg);
+}
+
+.burger-icons{
+    height: 16px;
+    width: auto;
+    margin-right: 32px;
+}
+
+.bottom{
+    position: absolute;
+    bottom: 16px;
+
+    font-style: italic;
+    font-size: 10pt;
+}
+
+.close{
+    height: 16px;
+    width: auto;
+    margin: 32px 0px;
+    cursor: pointer;
+}
+
+.close:hover{
+    transform: rotate(90deg);
+    transition: all 250ms;
+    }
+
+.visible-burger{
+    display: block;
+    opacity: 1;
+}
+
+.hide-burger{
+    display: none;
+    opacity: 0;
+}
+
+.note-outer{
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top:120px;
+    margin:0 200px 0 200px;
+
+    border:10px solid var(--blue);
+
+    height: 64px;
+    width: 482px;
+}
+
+.note-outer-inputs{
+    display: flex;
+    flex-direction: column;
+
+    margin:16px 16px 32px 16px;
+
+    /*border:5px solid var(--blue);*/
+
+    height: fit-content;
+    width: 482px;
+}
+
+.note-heading{
+    all:unset;
+
+    background:var(--white);
+    color:var(--black);
+    height: 32px;
+
+    padding: 8px 0 0 16px;
+
+    }.note-heading::placeholder{
+        color:gray;
+        font-size: 12pt;
+    }
+
+.note-heading-trash{
+    background:var(--white);
+    color:var(--black);
+}
+
+.fix{
+   font-weight: bold;
+   background: var(--blue);
+   color:var(--seashell);
+   padding:8px 8px 8px 16px;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background: var(--white);
+    padding:16px;
+}
+
+.wrapper-inputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background: var(--white);
+    padding:16px;
+}
+
+.wrapper-inputs-del{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background: var(--white);
+    padding:8px 16px;
+}
+
+.options-container-left{
+    display: flex;
+    flex-direction: row;
+    gap:32px;
+
+    background: var(--white);
+}
+
+.options-container-right{
+    display: flex;
+    flex-direction: row;
+    gap:16px;
+}
+
+.options-container-right-del{
+    display: flex;
+    flex-direction: row;
+    gap:16px;
+}
+
+.options-icons-left{
+    height: 16px;
+    width: auto;
+    cursor: pointer;
+}
+
+.options-icons-right{
+    height: 16px;
+    width: auto;
+    cursor: pointer;
+}
+
+.options-icons-right-del{
+    height: 16px;
+    width: auto;
+    cursor: pointer;
+}
+
+.options-icons-right-del img:hover{
+    all:unset;
+}
+
+.options-icons-left:hover, .options-container-right:hover{
+    transform: rotate(15deg);
+    transition: all 250ms;
+}
+
+/* ### Options Menu START ###*/
+.options{
+    position: relative;
+    display: inline-block;
+}
+
+.options:hover img{
+    filter: invert();
+    transform: rotate(90deg);
+    transition: all 250ms;
+}
+
+.more-options{
+    box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    position: absolute;
+    display: none;
+    margin-left:-32px;
+
+    line-height: 50px;
+    font-size: 11pt;
+    color: var(--white);
+
+    background: var(--blue);
+    border-top:21px solid var(--beige);
+    border-radius: 0 0 30px 0;
+    
+    min-width: 170px;
+    z-index: 999;
+}
+
+.more-options li{
+    padding:8px 32px 8px 32px;
+}
+
+.more-options li:hover{
+    cursor: pointer;
+    background: var(--seashell);
+    color: var(--black);
+}
+
+.more-options li:hover{
+    border-bottom: 5px solid var(--blue);
+}
+
+/*Show Menu on Hover at .options*/
+.options:hover .more-options{
+    display: block;
+}
+/* ### Options Menu END ###*/
+
+
+/* ### Options APPS MENU (on hover) START ###*/
+.options-apps{
+    position: relative;
+    display: inline-block;
+}
+
+.more-options-apps{
+    box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    position: absolute;
+    display: none;
+    margin-left:-250px;
+
+    line-height: 20px;
+    color: var(--white);
+
+    background: var(--blue);
+    border-top:21px solid var(--beige);
+    border-radius: 0 0 30px 0;
+    
+    min-width: 300px;
+    z-index: 999;
+}
+
+.more-options-apps li{
+    padding:16px;
+}
+
+.more-options-apps li:hover{
+    cursor: pointer;
+    background: var(--seashell);
+    color: var(--black);
+}
+
+/*Show Menu on Hover at .options*/
+.options-apps:hover .more-options-apps{
+    display: block;
+}
+/* ### Options APPS MENU (on hover) START ###*/
+
+#content-notes{
+    margin:300px 32px 16px 32px;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.message{
+    color:var(--white);
+    font-size: 16pt;
+    font-style: italic;
+    text-align: center;
+
+    position: absolute;
+    top:72px;
+
+    background:var(--blue);
+    padding: 8px;
+    width: 260px;
+    height: auto;
+}
+
+

@@ -1,0 +1,217 @@
+/*###############################
+###
+###     STYLESHEET NOTA APP
+###     version 1.0.0
+###     author: Benjamin Benenwitz
+###
+###
+***       ██████╗  ▀█
+***       ██╔══██╗ █▄
+***       ██████╦╝
+***       ██╔══██╗
+***       ██████╦╝
+***       ╚═════╝
+###
+#################################*/
+
+/*###############################
+###
+###     GENERAL STYLING
+###
+###     CLASSES
+###
+###     MEDIA QUERYS
+###
+#################################*/
+
+/*### COLORS ###
+:root{
+    --seashell: seashell;
+    --blue: #070059;
+    --beige:#ddcaaa;
+    --black:black;
+    --white:white;
+}
+*/
+
+
+/*#######################               CLASSES*/
+/*### MODAL SETTINGS END*/
+
+.modal-outer{
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #07005988;
+    z-index: 999;
+
+    margin:auto;
+    position: absolute;
+    top:0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-inner{
+    width: 280px;
+    height:fit-content;
+
+    padding:32px;
+
+    background:var(--seashell);
+
+    border-radius: 20px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.modal-inner p i{
+    font-size: 8pt;
+}
+
+.close-settings{
+    filter: invert();
+    transition: all 250ms;
+
+    cursor: pointer;
+
+    position: absolute;
+    top:32px;
+    right: 32px;
+}
+.close-settings:hover{
+    transform: rotate(90deg);
+}
+
+.modal-headline{
+    font-size: 16pt;
+    color: var(--blue);
+    font-weight: bold;
+}
+.modal-snd-headline{
+    font-size: 14pt;
+    color: var(--blue);
+}
+
+.modal-inner li{
+    font-size: 10pt;
+    margin-top: 16px;
+}
+
+.modal-inner-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+/*### MODAL SETTINGS END*/
+
+
+/*### TRASH MODAL BURGER MENU*/
+.trash-modal-outer{
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #07005988;
+    z-index: 999;
+
+    margin:auto;
+    position: fixed;
+    top:0;
+    left:0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ### TRASH CONTENT START
+***    SHOW DELETED NOTES
+*/
+.trash-outer-container{
+    display: flex;
+    flex-direction: column;
+
+    margin:16px 0;
+    /*border:5px solid var(--blue);*/
+
+    height: fit-content;
+    width: 240px;
+
+    line-height: 16px;
+}
+
+
+.trash-modal-inner{
+    width: 280px;
+    height:600px;
+
+    padding:32px;
+
+    background:var(--seashell);
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+
+    overflow: auto;
+}
+
+.close-trash{
+    filter: invert();
+    transition: all 250ms;
+
+    cursor: pointer;
+
+    position: absolute;
+    top:32px;
+    right: 32px;
+}
+.close-trash:hover{
+    transform: rotate(90deg);
+}
+
+.trash-modal-headline{
+    font-size: 16pt;
+    color: var(--blue);
+    font-weight: bold;
+    position: absolute;
+    top:8px;
+}
+
+.trash-modal-inner li{
+   list-style: none;
+   color:black;
+}
+
+.trash-modal-inner-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+#trash-content{
+    position: absolute;
+    top:96px;
+}
+
+#archive-content{
+    position: absolute;
+    top:96px;
+}

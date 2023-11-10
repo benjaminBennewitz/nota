@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Meine dritte CRUD App">
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/options-navi-menu.css">
+    <link rel="stylesheet" href="style/media.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
+
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/uiElements.js"></script>
+    <script type="text/javascript" src="js/darkLightMode.js"></script>
+    <script type="text/javascript" src="js/other.js"></script>
+
+    <title>Nota</title>
+</head>
+<body id="content" onload="render()">
+    <nav id="navi">
+        <!-- ### Burger Menu ### START -->
+        <div class="nav-container-left">
+            <a onclick="showBurger()"><img class="left-icons" src="assets/burger.png"/></a>
+            <div id="side-menu" class="burger-menu hide-burger">
+                <img id="close" class="close" src="assets/close.png" onclick="closeBurger()">
+                <a href="#"><li class="burger-rows"><img class="burger-icons" src="assets/favicon.png">Notizen</li></a>
+                <!-- <li class="burger-rows" onclick="sorry()"><img class="burger-icons" src="assets/reminder.png">Erinnerungen</li>
+                <li class="burger-rows" onclick="sorry()"><img class="burger-icons" src="assets/edit.png">Labels bearbeiten</li>-->
+                <li class="burger-rows" onclick="renderArchive(),showArchiveModal()"><img class="burger-icons" src="assets/archiv.png">Archiv</li>
+                <!-- Archive MODAL START-->
+                <div id="archive-modal" class="hide">
+                    <div class="trash-modal-outer">
+                        <div class="trash-modal-inner">
+                            <img id="close-trash" class="close-trash" src="assets/close.png" onclick="closeArchiveModal()">
+                            <p class="trash-modal-headline">Archiv<img onclick="restoreAll()" src="assets/move-all.png"/></p>
+                                <p id="archive-message"></p>
+                                <div class="trash-modal-inner-flex">
+                                    <div id="archive-content"></div>
+                                 </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Archive MODAL END-->
+                <li class="burger-rows" onclick="renderTrash(),showTrashModal()"><img class="burger-icons" src="assets/trash.png">Papierkorb</li>
+                    <!-- TRASH MODAL START-->
+                    <div id="trash-modal" class="hide">
+                        <div class="trash-modal-outer">
+                            <div class="trash-modal-inner">
+                                <img id="close-trash" class="close-trash" src="assets/close.png" onclick="closeTrashModal()">
+                                <p class="trash-modal-headline">Papierkorb<img onclick="deleteAll()" src="assets/trash-navy-all.png"/></p>
+                                    <p id="trash-message"></p>
+                                    <div class="trash-modal-inner-flex">
+                                        <div id="trash-content"></div>
+                                     </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TRASH MODAL END-->
+                <li class="bottom">made by B²</li>
+            </div>
+            <!-- ### Burger Menu ### END -->
+
+            <a><img class="visible left-icons" src="assets/logo.png"/><img class="hide left-icons" src="assets/media-logo.png"/></a>
+            <div class="flex-search-icon">
+                <input id="filter" onchange="filterNotes()" class="searchbar visible-input" type="text" placeholder="Suchen...">
+                <div class="search-icon search-icon-pos"></div>
+            </div>
+        </div>
+
+        <!-- ### NAVI Menu ### START -->
+        <div class="nav-container-right">
+            <a id="dash"><img onclick="listView()" class="nav-hover" src="assets/dash.png"/></a>
+            <a id="list" class="hide-burger"><img onclick="dashView()" class="nav-hover" src="assets/list.png"/></a>
+            <div class="options"><a><img  src="assets/options.png"/></a>
+                <div id="nav-menu" class="more-options">
+                    <li onclick="showMainSettings()">Einstellungen</li>
+                    <li id="dm" onclick="darkmode()">Dark Mode</li><li id="lm" class="hide" onclick="lightmode()">Light Mode</li>
+                </div>
+            </div>
+            <div class="options-apps"><a><img class="nav-hover" src="assets/more.png"/></a>
+                <div id="nav-menu" class="more-options-apps">
+                    <div class="flex-main apps-icons">
+                        <li><img src="assets/apps-01.png"/></li>
+                        <li><img src="assets/apps-02.png"/></li>
+                        <li><img src="assets/apps-03.png"/></li>
+                        <li><img src="assets/apps-04.png"/></li>
+                        <li><img src="assets/apps-05.png"/></li>
+                        <li><img src="assets/apps-06.png"/></li>
+                        <li><img src="assets/apps-01.png"/></li>
+                        <li><img src="assets/apps-02.png"/></li>
+                        <li><img src="assets/apps-03.png"/></li>
+                    </div>
+                </div>
+            </div>
+            <a><img class="nav-hover" onclick="rel()" src="assets/reload.png"/></a>
+            <a><img class="nav-hover" onclick="sorry('Platzhalter für Profilbild')" src="assets/profile.png"/></a>
+        </div>
+        <!-- ### NAVI Menu ### END -->
+    </nav>
+
+    <!-- ### SEARCHBAR DESKTOP ### START -->
+    <div class="flex-search-icon">
+        <input id="filter-mobile"  onchange="filterNotesMobile()" class="searchbar hide-input" type="text" placeholder="Suchen...">
+        <div class="search-icon search-icon-pos-mobile"></div>
+    </div>
+    <!-- ### SEARCHBAR DESKTOP ### END -->
+
+    <!-- ### NOTE INPUT ### START -->
+    <div class="flex-main">
+        <div id="note-outer" class="note-outer">
+            <input id="note-heading-const" class="note-heading" placeholder="Titel eingeben..."></input>
+            <textarea id="note-const" placeholder="Notiz schreiben..." name="message" col="4" rows="50" class="main"></textarea>
+            <div id="wrapper" class="wrapper">
+                <div id="note-options" class="options-container-left">
+                    <li><img class="options-icons-left" onclick="addNewNote()" src="assets/add.png"></li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ### NOTE INPUT ### END -->
+
+
+    <!--############################################-->
+    <!-- ### NOTE CONTENT ### START -->
+    <div id="inner-content" class="flex-snd"></div>
+    <!-- ### NOTE CONTENT ### START -->
+    <!--############################################-->
+
+
+    <!-- ### SETTINGS MODAL ### START -->
+    <div id="settings-modal" class="hide">
+        <div class="modal-outer">
+            <div class="modal-inner">
+                <p><i>Einstellungen sind ohne Funktion</i></p>
+                <img id="close-settings" class="close-settings" src="assets/close.png" onclick="closeSettings()">
+                <p class="modal-headline">Einstellungen</p>
+                <p class="modal-snd-headline">Notizen und Listen</p>
+                    <div class="modal-inner-flex">
+                        <li>Neue Einträge am Ende hinzufügen</li><input id="check1" type="checkbox" checked>
+                        <li>Abgehakte Elemente ans<br>Listenende verschieben</li><input id="check2" type="checkbox" checked>
+                        <li>Rich-Link-Vorschauen anzeigen</li><input id="check3" type="checkbox" checked>
+                        <li>Dunkles Design aktivieren</li><input id="check4" type="checkbox" unchecked>
+                     </div>
+                    <br><br>
+                    <p class="modal-snd-headline">Standardeinstellungen für Erinnerungen</p>
+                    <div class="modal-inner-flex">
+                        <li>Morgens</li><input id="check5" type="text">
+                        <li>Nachmittags</li><input id="check6" type="text">
+                        <li>Abends</li><input id="check7" type="text">
+                    </div>
+                    <br><br>
+                    <p class="modal-snd-headline">Freigabe</p>
+                    <div class="modal-inner-flex">
+                        <li>Freigabe aktivieren</li><input id="check8" type="checkbox" unchecked>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- ### SETTINGS MODAL ### START -->
+</body>
+</html>
